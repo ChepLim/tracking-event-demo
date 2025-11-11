@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-">
+    <title>Tracking Event Demo - Realistic</title>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TW8Q3XGZ');</script>
+<!-- End Google Tag Manager -->
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .product { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+        .category { margin-bottom: 20px; }
+        .btn { padding: 5px 10px; margin-right: 5px; cursor: pointer; }
+        .btn:hover { background-color: #f0f0f0; }
+    </style>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtmEvent(eventName, eventData) {
+            console.log("Pushing to dataLayer:", eventName, eventData);
+            dataLayer.push({ event: eventName, ...eventData });
+        }
+
+        function addToCart(productId, category, price, userType) {
+            gtmEvent('add_to_cart', {
+                product_id: productId,
+                category: category,
+                price: price,
+                user_type: userType
+            });
+        }
+
+        function viewDetails(productId, category, price, userType) {
+            gtmEvent('view_product_detail', {
+                product_id: productId,
+                category: category,
+                price: price,
+                user_type: userType
+            });
+        }
+
+        function selectCategory(category) {
+            gtmEvent('select_category', {
+                category: category
+            });
+        }
+    </script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TW8Q3XGZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <h1>🛍️ Product Catalog</h1>
+
+    <div class="category">
+        <strong>Filter by Category:</strong>
+        <button class="btn" onclick="selectCategory('electronics')">Electronics</button>
+        <button class="btn" onclick="selectCategory('fashion')">Fashion</button>
+        <button class="btn" onclick="selectCategory('books')">Books</button>
+    </div>
+
+    <div class="product">
+        <h3>Wireless Headphones</h3>
+        <p>Category: Electronics</p>
+        <p>Price: $99</p>
+        <button class="btn" onclick="addToCart('P001', 'electronics', 99, 'guest')">Add to Cart</button>
+        <button class="btn" onclick="viewDetails('P001', 'electronics', 99, 'guest')">View Details</button>
+    </div>
+
+    <div class="product">
+        <h3>Men's Jacket</h3>
+        <p>Category: Fashion</p>
+        <p>Price: $59</p>
+        <button class="btn" onclick="addToCart('P002', 'fashion', 59, 'guest')">Add to Cart</button>
+        <button class="btn" onclick="viewDetails('P002', 'fashion', 59, 'guest')">View Details</button>
+    </div>
+
+    <div class="product">
+        <h3>Data Science Book</h3>
+        <p>Category: Books</p>
+        <p>Price: $39</p>
+        <button class="btn" onclick="addToCart('P003', 'books', 39, 'guest')">Add to Cart</button>
+        <button class="btn" onclick="viewDetails('P003', 'books', 39, 'guest')">View Details</button>
+    </div>
+
+</body>
+</html>
