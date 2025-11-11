@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tracking Event Demo</title>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TW8Q3XGZ');</script>
+<!-- End Google Tag Manager -->
+    <!-- Define gtmEvent function early to avoid ReferenceError -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtmEvent(eventName, eventData) {
+            console.log("Pushing to dataLayer:", eventName, eventData);
+            dataLayer.push({ event: eventName, ...eventData });
+        }
+    </script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        button, input[type="submit"] { margin: 10px 0; padding: 10px 20px; }
+        a { display: block; margin: 10px 0; color: blue; text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TW8Q3XGZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <!-- GTM noscript iframe placeholder -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <h1>Tracking Event Demo</h1>
+
+    <button onclick="gtmEvent('button_click', {button_name: 'Demo Button'})">Click Me</button>
+
+    <form onsubmit="gtmEvent('form_submit', {form_name: 'Demo Form'}); return false;">
+        <input type="text" name="name" placeholder="Enter your name">
+        <input type="submit" value="Submit Form">
+    </form>
+
+    <a href="#" onclick="gtmEvent('link_click', {link_text: 'Demo Link'})">Click this link</a>
+</body>
+</html>
